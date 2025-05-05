@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #1a56db;
+  --primary-dark: #1e429f;
+  --secondary: #7e3af2;
+  --accent: #dc2626;
+  --success: #0e9f6e;
+  --warning: #ff5a1f;
+  --danger: #e02424;
+  --background: #f9fafb;
+  --foreground: #111827;
+}
+
+body {
+  @apply bg-gray-50 text-gray-900 antialiased;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
+  }
+  
+  .btn-secondary {
+    @apply bg-purple-600 text-white hover:bg-purple-700 focus:ring-purple-500;
+  }
+  
+  .btn-accent {
+    @apply bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
+  }
+  
+  .btn-outline {
+    @apply border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:ring-blue-500;
+  }
+  
+  .btn-danger {
+    @apply bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden;
+  }
+  
+  .form-input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+  }
+  
+  .form-label {
+    @apply block text-sm font-medium text-gray-700 mb-1;
+  }
+  
+  .section-title {
+    @apply text-2xl font-bold text-gray-900 mb-4;
+  }
+}
+
+.webcam-container {
+  @apply relative overflow-hidden rounded-lg shadow-inner bg-gray-800;
+}
+
+.face-outline {
+  @apply absolute border-4 border-green-500 rounded-full opacity-0 transition-opacity duration-300;
+}
+
+.face-outline.detected {
+  @apply opacity-100;
+}
+
+.authentication-animation {
+  @apply absolute inset-0 bg-blue-500 bg-opacity-30 scale-0 transform transition-transform duration-500 rounded-lg;
+}
+
+.authentication-animation.authenticating {
+  @apply scale-100;
+}
+
+/* Progress bar animation */
+.progress-bar {
+  @apply h-2 bg-gray-200 rounded-full overflow-hidden;
+}
+
+.progress-value {
+  @apply h-full bg-blue-600 rounded-full transition-all duration-500 ease-out;
+}
+
+/* Pulse animation for verification */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.pulse-animation {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Vote confirmation animation */
+@keyframes confirmVote {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.vote-confirm {
+  animation: confirmVote 0.5s ease-in-out;
+}
+
+/* Fall in animation for results */
+@keyframes fallIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fall-in {
+  animation: fallIn 0.6s ease-out forwards;
+}
+
+/* Staggered animation delays for lists */
+.stagger-item:nth-child(1) { animation-delay: 0s; }
+.stagger-item:nth-child(2) { animation-delay: 0.1s; }
+.stagger-item:nth-child(3) { animation-delay: 0.2s; }
+.stagger-item:nth-child(4) { animation-delay: 0.3s; }
+.stagger-item:nth-child(5) { animation-delay: 0.4s; }
